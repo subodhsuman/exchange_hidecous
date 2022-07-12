@@ -1,0 +1,10 @@
+<svg id="Group_481" data-name="Group 481" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28.356 20.01">
+  <g id="Icon_ionic-ios-qr-scanner" data-name="Icon ionic-ios-qr-scanner" transform="translate(3.516)">
+    <path id="Path_162" data-name="Path 162" d="M9.941,4.5H6.877A3.5,3.5,0,0,0,3.375,8v3.064a.73.73,0,0,0,1.459,0V7.95A2.121,2.121,0,0,1,6.825,5.959H9.941a.73.73,0,0,0,0-1.459Z" transform="translate(-3.375 -4.5)" fill="#bcbcbc"/>
+    <path id="Path_163" data-name="Path 163" d="M26.627,4.5H23.511a.73.73,0,1,0,0,1.459h3.116A2.121,2.121,0,0,1,28.617,7.95v3.116a.73.73,0,0,0,1.459,0V7.95A3.454,3.454,0,0,0,26.627,4.5Z" transform="translate(-8.399 -4.5)" fill="#bcbcbc"/>
+    <path id="Path_164" data-name="Path 164" d="M9.941,27.492H6.825A2.121,2.121,0,0,1,4.834,25.5V22.386a.73.73,0,0,0-1.459,0V25.5a3.454,3.454,0,0,0,3.45,3.45H9.941a.73.73,0,0,0,0-1.459Z" transform="translate(-3.375 -8.942)" fill="#bcbcbc"/>
+    <path id="Path_165" data-name="Path 165" d="M29.347,21.656a.732.732,0,0,0-.73.73V25.5a2.121,2.121,0,0,1-1.991,1.991H23.511a.73.73,0,1,0,0,1.459h3.064a3.506,3.506,0,0,0,3.5-3.5V22.386A.732.732,0,0,0,29.347,21.656Z" transform="translate(-8.399 -8.942)" fill="#bcbcbc"/>
+  </g>
+  <rect id="Rectangle_406" data-name="Rectangle 406" width="28.356" height="7.94" transform="translate(0 9.548)" fill="#bcbcbc" opacity="0.2"/>
+  <rect id="Rectangle_407" data-name="Rectangle 407" width="28.356" height="0.567" transform="translate(0 9.548)" fill="#bcbcbc"/>
+</svg>

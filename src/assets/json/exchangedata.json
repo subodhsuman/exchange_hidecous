@@ -1,0 +1,308 @@
+{
+  "TableData": [
+    {
+      "coin": "icon3.png",
+      "name": "Bitcoin",
+      "price": "39,010.46",
+      "change": "270"
+    },
+    {
+      "coin": "icon2.png",
+      "name": "lota",
+      "price": "39,010.46",
+      "change": "270"
+    },
+    {
+      "coin": "icon1.png",
+      "name": "Bitcoin",
+      "price": "39,010.46",
+      "change": "270"
+    },
+    {
+      "coin": "icon4.png",
+      "name": "Neo",
+      "price": "39,010.46",
+      "change": "270"
+    },
+    {
+      "coin": "icon5.png",
+      "name": "Dash",
+      "price": "39,010.46",
+      "change": "270"
+    },
+    {
+      "coin": "icon6.png",
+      "name": "Ethereum",
+      "price": "39,010.46",
+      "change": "270"
+    }
+  ],
+  "FeatureData": [
+    {
+      "image": "platform.png",
+      "heading": "Across 5 Platform",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "image": "security.png",
+      "heading": "Best in class security",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "image": "kyc.png",
+      "heading": "SUPER FAST KYC",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "image": "speed.png",
+      "heading": "LIGHTING SPEED TRANSACTION",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "image": "deposit.png",
+      "heading": "EASY DEPOSIT AND WITHDRAWAL",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "image": "blockchain.png",
+      "heading": "BUILT BY BLOCKCHAIN BELIEVERS",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ],
+  "trade_history": [
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    },
+    {
+      "price": "-38303.59",
+      "volume": "4000.25",
+      "time": "11:20:45"
+    }
+  ],
+ "PortfolioData": [{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+},
+{
+    "coin": "Bitcoin",
+    "name": "BTC",
+   "image": "bitcoin.png",
+    "assets": "DENT",
+    "price": "0.00349700",
+    "qty": "0",
+    "total": "0"
+}
+],
+"CurrencyData": [{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "-34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "-34.171534"
+},
+
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "-34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "-34.171534"
+},
+{
+  "name": "BTC",
+  "amount": "12.1682",
+  "total": "-34.171534"
+}
+]
+}
