@@ -10,11 +10,11 @@ export default class ApiClass {
 
     // New local link
     static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
-    static VUE_DOMAIN = "http://192.168.10.79:8080/";
-    static nodeUrl = "http://192.168.11.116:4000/";
-    static nodeWebsocket = "ws://192.168.11.116:4000/";
-    static baseUrl = "http://192.168.11.116:8000/api/";
-    static baseUrl = "http://192.168.11.209:8080/" 
+    static VUE_DOMAIN = "http://192.168.11.209:8083/";
+    static nodeUrl = "http://192.168.11.116:5000/";
+    static nodeWebsocket = "ws://192.168.11.116:5000/";
+    static baseUrl = "http://192.168.11.116:9000/api/";
+ 
 
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////

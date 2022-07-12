@@ -62,9 +62,9 @@
                                     <button type="button" class="cus_btn shadow-none" @click="toggle = !toggle,toggle1=false">GET STARTED</button>
                                 </div>
                                 <div class="log_box px-3 py-4" v-if="toggle">
-                                    <router-link class="shadow-none" type="button" to="/portfolio" @click="toggle=false"> Sign in</router-link>
+                                    <router-link class="shadow-none" type="button" to="/login" @click="toggle=false"> Sign in</router-link>
                                     <span class="px-2"> | </span>
-                                    <router-link class="shadow-none" type="button" to="/" @click="toggle=false"> Sign up </router-link>
+                                    <router-link class="shadow-none" type="button" to="/register" @click="toggle=false"> Sign up </router-link>
                                 </div>
                             </li>
                         </ul>

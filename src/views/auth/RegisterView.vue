@@ -143,49 +143,11 @@ export default {
     name: 'RegisterView',
     data() {
         return {
-            // CodeDetail: [{
-            //         num: "+91",
-            //         img: "india.png",
-            //     },
-            //     {
-            //         num: "+234",
-            //         img: "germany.png"
-            //     },
-            //     {
-            //         num: "+7",
-            //         img: "nigeria",
-            //     },
-            //     {
-            //         num: "+90",
-            //         img: "rusia"
-            //     },
-            //     {
-            //         num: "+234",
-            //         img: "turkey"
-            //     },
-            //     {
-            //         num: "+7",
-            //         img: "uae"
-            //     },
-            //     {
-            //         num: "+90",
-            //         img: "india"
-            //     },
-            // ]
+
         }
 
     },
-    // methods: {
 
-    //     selectCode(selected_code) {
-    //         this.code = selected_code;
-    //     },
-
-    // },
-    // mounted() {
-    //     // this.mountedf();
-    //     this.selectCode(this.code);
-    // },
 }
 </script>
 

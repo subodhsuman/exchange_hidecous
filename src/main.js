@@ -11,4 +11,12 @@ import "bootstrap"
 
 import { Skeletor } from "vue-skeletor"; 
 
-createApp(App).component(Skeletor.name, Skeletor).component('pagination', Pagination).use(store).use(router).mount('#app')
+//mixin 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import SweetAlert from '@/common/mixins.js'
+
+
+
+
+createApp(App).component(Skeletor.name, Skeletor).use(VueSweetalert2).mixin(SweetAlert).component('pagination', Pagination).use(store).use(router).mount('#app')
