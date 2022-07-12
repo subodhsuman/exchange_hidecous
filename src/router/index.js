@@ -127,6 +127,46 @@ const routes = [
 },
 
 
+  {
+    path: '/login',
+    name: 'LoginView',
+    component: () =>
+      import('../views/auth/LoginView.vue')
+  },
+
+
+  {
+    path: '/register',
+    name: 'RegisterView',
+    component: () =>
+      import('../views/auth/RegisterView.vue')
+  },
+  {
+    path: '/forgot-password',
+    name: 'ForgotPasswordView',
+    component: () =>
+      import('../views/auth/ForgotPasswordView.vue')
+  },
+  {
+    path: '/reset-password',
+    name: 'ResetPasswordView',
+    component: () =>
+      import('../views/auth/ResetPasswordView.vue')
+  },
+  {
+    path: '/verify',
+    name: 'VerificationView',
+    component: () =>
+      import('../views/auth/VerificationView.vue')
+  },
+  {
+    path: '/verifymail',
+    name: 'EmailVerifyView',
+    component: () =>
+      import('../views/auth/EmailVerifyView.vue')
+  },
+
+
 ]
 
 const router = createRouter({
