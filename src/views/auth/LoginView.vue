@@ -119,7 +119,7 @@ export default {
             password: '', 
             recaptchaModel:''        
         })
-        let form = reactive(state)
+        
         const rules = {
             email: { required: helpers.withMessage('Email feild is required',required), email: helpers.withMessage('Value must be an email',email) },
             password: { required: helpers.withMessage('Password feild is required', required) },
@@ -128,7 +128,7 @@ export default {
 
         const v$ = useVuelidate(rules, state)
         
-        return { state, type, v$, recaptchaKey, loader, form }
+        return { state, type, v$, recaptchaKey, loader }
     },
     methods: {
         async submit() {
@@ -148,29 +148,34 @@ export default {
                     this.state.recaptchaModel = '';
                     return this.failed(res.data.message);
                 }
+                this.reSet();
 
                 this.success(res.data.message);
-                this.reSet();
                 if (res.data.data.token) { 
                     localStorage.setItem('token', res.data.data.token)
                     localStorage.setItem('user', JSON.stringify(res.data.data.user))
+                    this.$store.commit('setLogin', true)
                     await new Promise((resolve) => setTimeout(resolve, 1000)); 
                     this.$router.push("/exchange");                    
                 }
-                else {                    
+                else {  
+                    console.log('commiting data==');
+                    this.$store.commit('otpData', JSON.stringify(res.data.data));
                     this.$router.push({
-                        name: 'VerificationView',
-                        params:
-                        {
-                        optData : JSON.stringify(res.data.data)
-                    }});                 
-
+                        name: 'VerificationView'
+                    });
+                    // this.$router.push({
+                    //     name: 'VerificationView',
+                    //     params:
+                    //     {
+                    //     optData : JSON.stringify(res.data.data)
+                    // }});                 
                 }
             }            
         },
         reSet() {
-            this.v$.$reset();
-            this.form = reactive(this.state);
+            this.v$.$reset();            
+            Object.keys(this.state).forEach((i) => this.state[i] = "");  
         }
 
     }

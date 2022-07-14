@@ -1,24 +1,44 @@
 <template>
-<div>
-    <section class="verify_mail d-flex align-items-center">
-        <div class="container">
-            <div class="col-md-12 text-center">
-                <div class="verfiy_heading mb-5">
-                    <h6>We are Redirecting to Exchange Page</h6>
-                </div>
-                <!-- SPINNER -->
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+    <div>
+        <section class="verify_mail d-flex align-items-center">
+            <div class="container">
+                <div class="col-md-12 text-center">
+                    <div class="verfiy_heading mb-5">
+                        <h6>Please wait while Redirecting you to Exchange...</h6>
+                    </div>
+                    <!-- SPINNER -->
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 </template>
 
 <script>
+import ApiClass from '@/api/api'
 export default {
-    name: 'EmailVerifyView'
+    name: 'EmailVerifyView',
+   async mounted()
+    {
+       let res = await ApiClass.postRequest('register/verify', false, { token: this.$route.query.token || "" })
+       if (res?.data)
+       {
+           if (res.data.status_code == 0)
+           {
+               await new Promise((resolve) => setTimeout(resolve, 2000));
+               this.failed(res.data.message);
+               return this.$router.push('/register');
+           }
+           localStorage.setItem('token', res.data.data.token)
+           localStorage.setItem('user', JSON.stringify(res.data.data.user))
+           this.$store.commit('setLogin',true)
+           await new Promise((resolve) => setTimeout(resolve, 1000));
+           this.$router.push("/exchange"); 
+
+       }
+    }
 }
 </script>
 
