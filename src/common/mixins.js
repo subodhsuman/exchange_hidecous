@@ -1,5 +1,4 @@
-
-
+import ApiClass from '@/api/api'
 var SweetAlert = {
     methods: {
         success: function (message) {
@@ -22,30 +21,51 @@ var SweetAlert = {
                 showConfirmButton: false,
             });
         },
-       
-        // alert(options) {
-        //     swal(options)
-        // },
-        // alertSuccess({
-        //     title = "Success!", text = "That's all done!", timer = 1000, showConfirmationButton = false
-        // } = {}) {
-        //     this.alert({
-        //         title: title,
-        //         text: text,
-        //         timer: timer,
-        //         showConfirmButton: showConfirmationButton,
-        //         type: 'success'
-        //     });
-        // },
-        // alertError({
-        //     title = "Error!", text = "Oops...Something went wrong"
-        // } = {}) {
-        //     this.alert({
-        //         title: title,
-        //         text: text,
-        //         type: 'error'
-        //     });
-        // },
+
+        logoutAlert: function () {
+            this.$swal.fire({
+                    title: "Please Confirm!",
+                    text: "Are you sure you want to Logout!",
+                    icon: "warning",
+                    iconColor: "#db9d2b",
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    confirmButtonColor: "#db9d2b",
+                    cancelButtonColor: "#db9d2b",
+                    confirmButtonText: "logout from all devices!",
+                    showLoaderOnConfirm: true,
+                    cancelButtonText: "logout from this device only!",
+                    showLoaderOnCancel: true,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        new Promise((resolve) => setTimeout(resolve, 5000));
+                 
+                        this.inLogout("hardlogout");
+                        
+                    } else if (result.dismiss == this.$swal.DismissReason.cancel) {
+                        this.inLogout("logout");
+                       
+
+                    }
+                });
+        },
+
+      async inLogout(type) {
+            let res = await ApiClass.deleteRequest(type, true);
+            if (res?.data) {                
+                if (res.data.status_code == 1) {
+                    localStorage.clear();
+                    this.$store.commit("setLogin", false);
+                    location.replace("/exchange");
+                    this.success(res.data.message);
+                } else {
+                    this.failed(res.data.message);
+                }
+            }
+        }
+
     }
 }
 

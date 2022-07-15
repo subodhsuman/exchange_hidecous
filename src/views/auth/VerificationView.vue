@@ -143,6 +143,7 @@ export default {
                     return this.failed(res.data.message);
                 }
                 this.reSet();
+                console.log(res.data.data);
                 localStorage.setItem('token', res.data.data.token)
                 localStorage.setItem('user', JSON.stringify(res.data.data.user))
                 this.$store.commit('setLogin', true)

@@ -1,97 +1,143 @@
 <template>
-<div>
-    <header class="exchange-header">
-        <nav :class="{change_color: scrollPosition > 40}" class="navbar navbar-expand-xl">
-            <div class="container-fluid">
-                <router-link class="navbar-brand exchange-logo px-2" to="/"><img src="../assets/logo.png" class="img-fluid"></router-link>
-                <button @click="hidden = !hidden" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"><img :src="hidden ? hide : show"></span>
-                </button>
-                <!-- ******************************* HIDEOUS EXCHANGE HEADER  *******************************  -->
-                <div class="collapse navbar-collapse justify-content-between mt-xl-0 mt-2" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item px-xl-2 px-0 " @click="closeToggle">
-                            <router-link class="nav-link" aria-current="page" to="/exchange">Exchange</router-link>
+    <div>
+        <header class="exchange-header">
+            <nav :class="{change_color: scrollPosition > 40}" class="navbar navbar-expand-xl">
+                <div class="container-fluid">
+                    <router-link class="navbar-brand exchange-logo px-2" to="/"><img src="../assets/logo.png"
+                            class="img-fluid"></router-link>
+                    <button @click="hidden = !hidden" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><img :src="hidden ? hide : show"></span>
+                    </button>
+                    <!-- ******************************* HIDEOUS EXCHANGE HEADER  *******************************  -->
+                    <div class="collapse navbar-collapse justify-content-between mt-xl-0 mt-2" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item px-xl-2 px-0 " @click="closeToggle">
+                                <router-link class="nav-link" aria-current="page" to="/exchange">Exchange</router-link>
 
-                        </li>
-                        <li class="nav-item px-xl-2 px-0" @click=" closeToggle">
-                            <router-link class="nav-link" to="/p2p">P2p</router-link>
-                        </li>
-                        <li class="nav-item px-xl-2 px-0 " @click="closeToggle">
-                            <router-link class="nav-link" aria-current="page" to="/portfolio">Portfolio</router-link>
-
-                        </li>
-
-                        <li class="nav-item px-xl-2 px-0 " @click="closeToggle">
-                            <router-link class="nav-link" to="/setting/profile">Settings</router-link>
-                        </li>
-
-                    </ul>
-
-                    <div class="left_nav">
-                        <ul class="d-xl-flex d-block navbar-nav">
-
-                            <!-- DAY NIGHT THEME BUTTONS -->
-                            <li class="nav-item p-xl-2 p-0 mb-2 mb-xl-0">
-                                <div class="d-flex day_night">
-                                    <button type="button" class="btn p-0 px-0 px-xl-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: var(--hideous-sun);transform: ;msFilter:;" @click="themeChange()">
-                                            <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
-                                        </svg>
-                                    </button>
-                                    <span class="py-1"> <img src="../assets/images/s-line.png" alt="icon"> </span>
-                                    <button type="button" class="btn p-0 px-0 px-xl-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: var(--hideous-moon);transform: ;msFilter:;" @click="themeChange()">
-                                            <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
                             </li>
-                            <!-- DOWNLOAD HERE BUTTON -->
-                            <li class="nav-item p-xl-2 p-0  d-xl-flex d-block me-0 me-xl-3">
-                                <button type="button" class="download_here download_btn mb-2 mb-xl-0" @click="toggle1 = !toggle1,toggle=false;"> Download
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill: rgba( 255, 255, 255, 1)" viewBox="0 0 384 512">
-                                            <path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" /></svg>
-                                    </span>
-                                </button>
-                                <div class="download_box px-3 py-2" v-if="toggle1">
-                                    <img src="../assets/images/code-qr.png" alt="icon" class="img-fluid">
-                                    <div class="d-flex justify-content-around">
-                                        <img src="../assets/images/for-i.png" alt="icon" class="img-fluid">
-                                        <!-- <img src="../assets/images/line.png" alt="icon" class="img-fluid"> -->
-                                        <span class="px-2"> | </span>
-
-                                        <img src="../assets/images/for-android.png" alt="icon" class="img-fluid">
-                                    </div>
-                                </div>
+                            <li class="nav-item px-xl-2 px-0" @click="closeToggle" v-if="isLogin">
+                                <router-link class="nav-link" to="/p2p">P2p</router-link>
+                            </li>
+                            <li class="nav-item px-xl-2 px-0 " @click="closeToggle" v-if="isLogin">
+                                <router-link class="nav-link" aria-current="page" to="/portfolio">Portfolio
+                                </router-link>
+                            </li>
+                            <li class="nav-item px-xl-2 px-0 " @click="closeToggle" v-if="isLogin">
+                                <router-link class="nav-link" to="/setting/profile">Settings</router-link>
                             </li>
 
-                            <!-- GET STARTED -->
-                            <li class="nav-item p-xl-2 p-0 d-xl-flex d-block">
-                                <div class="get_started button " style="cursor: pointer;">
-
-                                    <button type="button" class="cus_btn shadow-none" @click="toggle = !toggle,toggle1=false">GET STARTED</button>
-                                </div>
-                                <div class="log_box px-3 py-4" v-if="toggle">
-                                    <router-link class="shadow-none" type="button" to="/login" @click="toggle=false"> Sign in</router-link>
-                                    <span class="px-2"> | </span>
-                                    <router-link class="shadow-none" type="button" to="/register" @click="toggle=false"> Sign up </router-link>
-                                </div>
-                            </li>
                         </ul>
 
-                    </div>
+                        <div class="left_nav">
+                            <ul class="d-xl-flex d-block navbar-nav">
 
+                                <!-- DAY NIGHT THEME BUTTONS -->
+                                <li class="nav-item p-xl-2 p-0 mb-2 mb-xl-0">
+                                    <div class="d-flex day_night">
+                                        <button type="button" class="btn p-0 px-0 px-xl-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                style="fill: var(--hideous-sun);transform: ;msFilter:;"
+                                                @click="themeChange()">
+                                                <path
+                                                    d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <span class="py-1"> <img src="../assets/images/s-line.png" alt="icon"> </span>
+                                        <button type="button" class="btn p-0 px-0 px-xl-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                style="fill: var(--hideous-moon);transform: ;msFilter:;"
+                                                @click="themeChange()">
+                                                <path
+                                                    d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </li>
+                                <!-- DOWNLOAD HERE BUTTON -->
+                                <li class="nav-item p-xl-2 p-0  d-xl-flex d-block me-0 me-xl-3">
+                                    <button type="button" class="download_here download_btn mb-2 mb-xl-0"
+                                        @click="toggle1 = !toggle1,toggle=false;"> Download
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                style="fill: rgba( 255, 255, 255, 1)" viewBox="0 0 384 512">
+                                                <path
+                                                    d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <div class="download_box px-3 py-2" v-if="toggle1">
+                                        <img src="../assets/images/code-qr.png" alt="icon" class="img-fluid">
+                                        <div class="d-flex justify-content-around">
+                                            <img src="../assets/images/for-i.png" alt="icon" class="img-fluid">
+                                            <!-- <img src="../assets/images/line.png" alt="icon" class="img-fluid"> -->
+                                            <span class="px-2"> | </span>
+
+                                            <img src="../assets/images/for-android.png" alt="icon" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- GET STARTED -->
+                                <li class="nav-item p-xl-2 p-0 d-xl-flex d-block" v-if="!isLogin">
+                                    <div class="get_started button " style="cursor: pointer;">
+
+                                        <button type="button" class="cus_btn shadow-none"
+                                            @click="toggle = !toggle,toggle1=false">GET STARTED</button>
+                                    </div>
+                                    <div class="log_box px-3 py-4" v-if="toggle">
+                                        <router-link class="shadow-none" type="button" to="/login"
+                                            @click="toggle=false"> Sign in</router-link>
+                                        <span class="px-2"> | </span>
+                                        <router-link class="shadow-none" type="button" to="/register"
+                                            @click="toggle=false"> Sign up </router-link>
+                                    </div>
+                                </li>
+                                <li class="nav-item p-xl-2 p-0 d-xl-flex d-block" v-else>
+                                    <!-- <button type="button" class="cus_btn logout_btn" data-bs-toggle="modal"
+                                        data-bs-target="#logoutmodal">
+                                        Logout
+                                    </button> -->
+                                    <button type="button" class="cus_btn logout_btn" @click="this.logoutAlert()">
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!--Logout Modal -->
+        <!-- <div class="modal fade" id="logoutmodal" tabindex="-1" aria-labelledby="logoutmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutmodalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div> -->
 
-</div>
+    </div>
 </template>
 
 <script>
+
 export default {
     name: 'ExHeader',
     data() {
@@ -103,6 +149,7 @@ export default {
             toggle: false,
             toggle1: false,
             toggleVal: true,
+            isLogin:false,
         }
 
     },
@@ -111,7 +158,18 @@ export default {
         const menuToggle = document.getElementById("navbarNav");
         menuToggle.classList.remove("show");
     },
+    watch:
+    {
+        '$store.getters.getLogin': function () { 
+            this.isLogin = (localStorage.getItem('token') || this.$store.getters.getLogin) ? true : false;
+        }
+    },
+    mounted() {
+        this.isLogin = (localStorage.getItem('token') || this.$store.getters.getLogin) ? true : false;
+        window.addEventListener('scroll', this.updateScroll);
+    },
     methods: {
+        
         lighttheme() {
             // this.toggleVal ? this.darkChart() : this.lightChart();
             var light = document.getElementById("hide_exchange");
@@ -129,15 +187,12 @@ export default {
             this.scrollPosition = window.scrollY
 
         },
-        mounted() {
-            window.addEventListener('scroll', this.updateScroll);
-        }
-
     }
 }
 </script>
 
 <style scoped>
+
 /* .change_color {
  background-color: var(--just-bit-secondary); 
 } */
@@ -317,6 +372,11 @@ nav ul li a:hover,
     left: calc((40px - 15px) + 2px);
     background: #5a5a5a;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 9%);
+}
+.modal-content {
+    Background: var(--modal-bg);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 @media (max-width:1200px) {
