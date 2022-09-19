@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="col-md-5 col-lg-5 col-xl-5">
                                         <div class="btn_save text-center">
-                                            <button type="submit" class="btn setting_btn shadow-none my-3">Save</button>
+                                            <button type="submit"  class="btn setting_btn shadow-none my-3" >Save</button>
                                             <button type="submit" class="btn setting_btn shadow-none my-3" v-if="loading">
                                                 <div class="d-flex justify-content-center">
                                                     <div class="spinner-border" role="status">
@@ -66,6 +66,7 @@ export default {
     name: 'TradingreportView',
     components: {
         SettingLayout
+   
     }
 }
 </script>

@@ -1,9 +1,12 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
+  plugins: [createPersistedState()],
   state: {
     otp: null,
-    login:''
+    login:'',
+    list:[]
   },
   getters: {
     getOtpData(state) {
@@ -12,6 +15,9 @@ export default createStore({
     getLogin(state)
     {
       return state.login
+    },
+    getList(state) {
+      return state.list
     }
   },
   mutations: {    
@@ -20,6 +26,9 @@ export default createStore({
     },
     setLogin(state, payload) {
       state.login = payload
+    },
+    TiketList(state, payload) {
+      state.list = payload
     }
   },
   actions: {

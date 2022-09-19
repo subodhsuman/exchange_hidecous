@@ -11,36 +11,45 @@
                             </div>
                             <div class="setting_content p-4">
                                 <table class="table table-responsive text-nowrap">
+                                     <div class="d-flex justify-content-center" v-if="loading=!loading">
+                                        <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                           </div>
+                                               </div> 
                                     <thead>
                                         <tr class="text-center mb-3">
                                             <th scope="col">Date</th>
                                             <th scope="col">IP</th>
                                             <th scope="col">Activity</th>
                                         </tr>
+                                       
                                     </thead>
+                                     
                                     <tbody>
-                                        <tr class="text-center mb-3" v-for="(log, index) in LogData" :key="index">
-                                            <td>{{log.data1}}</td>
-                                            <td>{{log.data2}}</td>
-                                            <td class="list_box1">{{log.data3}}</td>
+                                        <tr class="text-center mb-3" v-for="(log, index) in get_activitydata" :key="index">
+                                            <td id="formatDate">{{ moment(log.created_at) }}</td> 
+                                            <td>{{log.ip}}</td>
+                                            <td class="list_box1">{{log.type}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="pagination_box d-flex justify-content-end" style="color:white">
-                                    <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="activityLogs" />
+                                    <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="getActivitylog" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>                                                                        
     </SettingLayout>
 </div>
 </template>
 
 <script>
 import SettingLayout from '@/Layout/SettingLayout'
+import ApiClass from '@/api/api.js'
+import moment from "moment";
 export default {
     name: 'ActivitylogView',
     components: {
@@ -48,8 +57,11 @@ export default {
     },
     data() {
         return {
+        
+            
+            loading: true,
             page: 1,
-            recordData: 100,
+            recordData: 0,
             perPageData: 10,
             options: {
                 edgeNavigation: false,
@@ -58,70 +70,37 @@ export default {
                 texts: false,
                 format: false,
             },
-            LogData: [{
-                    data1: '8 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '9 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '10 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                },
-                {
-                    data1: '12 March 2022 4:53:24',
-                    data2: '192.168.10.65',
-                    data3: 'Login Success',
-                }
-            ]
+            get_activitydata:[],
         }
     },
+
+  mounted() {
+        this.getActivitylog();
+        console.log(this.page);
+
+
+ },
     methods: {
-        activityLogs() {
-            console.log('here');
+        moment(date) {
+            return moment(date).format("MMMM Do YYYY, h:mm:ss a");
+            // {{ moment(item.created_at) }}
+        },
+      async getActivitylog() {
+         
+        let response = await ApiClass.getRequest("log/get?page=" + this.page + "&per_page=" + this.perPageData);
+             this.get_activitydata = response.data.data.data;
+             console.log( this.get_activitydata);
+             this.page = response.data.data.current_page;
+             this.perPageData = response.data.data.per_page;
+              this.recordData = response.data.data.total;
         }
-    }
+    },
 }
+
+
+ 
+
+
 </script>
 
 <style scoped>

@@ -27,19 +27,25 @@
                                             </tr>
                                         </thead>
                                         <tbody v-if="show">
-                                            <tr v-for="(list, index) in ListData" :key="index">
-                                                <td>{{list.sno}}</td>
-                                                <td>{{list.type}}</td>
-                                                <td>{{list.title}}</td>
-                                                <td>{{list.name}}</td>
-                                                <td>{{list.email}}</td>
-                                                <td>{{list.generated}}</td>
-                                                <td>{{list.status}}</td>
+
+                                            <tr v-for="(res,index) in ticketlist" :key="index">
+                                                <td>{{index+1}} </td>
+                                                <td>{{res.category.name}}</td>
+                                                <td>{{res.title}}</td>
+                                                <td>{{res.author_name}}</td>
+                                                <td>{{res.author_email}}</td>
+                                                <td>{{ new Date(res.created_at).toLocaleTimeString("en-IN",optionsDate)}}</td>
+                                                <td>{{res.status}}</td>
+                                                <td>{{res.action}}</td>
                                                 <td>
-                                                    <router-link to="/setting/ticketlistmodal"><img :src="require(`@/assets/images/icons/${list.action}`)" class="img-fluid"></router-link>
+                                                    <!-- <router-link to="/setting/ticketlistmodal"><img :src="action" class="img-fluid"></router-link> -->
+                                                    <!-- <router-link :to="{ name:'TicketmodalView', params: {details :Object.values(res)}}" ><img src="@/assets/images/icons/hide.svg" class="img-fluid"  @click="changeData(res.category.id)"></router-link> -->
+                                                    <router-link to="/setting/ticketlistmodal"><img src="@/assets/images/icons/hide.svg" class="img-fluid" @click="changeData(res)"></router-link>
+
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <!-- <router-link :to="{ component:'/setting/ticketlistmodal', params: {nameuth:res.author_name,statusUser:res.status} }">Navigate to Page2</router-link> -->
                                         <tbody v-else>
                                             <tr>
                                                 <td colspan="10">
@@ -51,7 +57,7 @@
                                         </tbody>
                                     </table>
                                     <div class="pagination_box d-flex justify-content-end" style="color:white">
-                                        <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="activityLogs" />
+                                        <pagination v-model="current_page" :records="recordData" :per-page="per_page_item" :options="options" @paginate="activityLogs" />
                                     </div>
                                 </div>
                             </div>
@@ -66,6 +72,7 @@
 
 <script>
 import SettingLayout from '@/Layout/SettingLayout'
+import ApiClass from "@/api/api"
 export default {
     name: 'TicketlistView',
     components: {
@@ -73,9 +80,11 @@ export default {
     },
     data() {
         return {
-            page: 1,
-            recordData: 100,
-            perPageData: 10,
+            // action:require(`@/assets/images/icons/${action}`),
+            ticketlist: [],
+            current_page: 1,
+            recordData: null,
+            per_page_item: 10,
             options: {
                 edgeNavigation: false,
                 chunksNavigation: false,
@@ -83,75 +92,43 @@ export default {
                 texts: false,
                 format: false,
             },
+
             show: true,
-            ListData: [{
-                    sno: '1',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                },
-                {
-                    sno: '2',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                },
-                {
-                    sno: '3',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                },
-                {
-                    sno: '4',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                },
-                {
-                    sno: '5',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                },
-                {
-                    sno: '6',
-                    type: 'NEWO',
-                    title: 'Exchange',
-                    name: 'seemapathnia',
-                    email: 'seema@mail.com',
-                    generated: '20June2022',
-                    status: 'open',
-                    action: 'hide.svg',
-                }
-            ]
+            optionsDate: {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            }
+
         }
     },
-       methods: {
-        activityLogs() {
-            console.log('here');
+    mounted() {
+        this.activityLogs();
+    },
+    methods: {
+        // activityLogs() {
+        //     console.log('here');
+        // },
+        async activityLogs() {
+            let response = await ApiClass.getRequest("ticket/get?page=" + this.current_page + "&per_page=" + this.per_page_item, true)
+           
+            if (response?.data.status_code == 1) {
+                this.ticketlist = response.data.data
+            } else {
+                return this.failed(response.data.message)
+            }
+            // console.log("get Ticketlist value",response)
+            //    console.log("get token list array value",res)
+        },
+        changeData(details) {
+            // return id    
+            let x = Object.values(details)
+            console.log("dlslslslsls", x)
+            this.$store.commit("TiketList", x);
         }
-    }
+
+    },
+
 }
 </script>
 

@@ -191,7 +191,9 @@ export default {
     --hideous-auth-grey: #F3F3F3;
 }
 
-
+.text-danger{
+    font-size: 14px;
+}
 
 section {
     padding: 70px 0;
@@ -325,7 +327,7 @@ section {
 }
 
 .setting_content label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--hideous-white);
 }

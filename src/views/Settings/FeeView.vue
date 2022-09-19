@@ -11,7 +11,7 @@
                                     <h6 class="mb-0">FEE DETAIL</h6>
                                 </div>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                                    <input class="form-check-input shadow-none" v-model="fee_by_lbm" @change="feeUpdate()" type="checkbox" role="switch" id="flexSwitchCheckChecked">
                                 </div>
                             </div>
                             <div class="setting_content p-5">
@@ -44,11 +44,44 @@
 
 <script>
 import SettingLayout from '@/Layout/SettingLayout'
+import ApiClass from "@/api/api"
 export default {
     name: 'FeeView',
     components: {
         SettingLayout
-    }
+    },
+
+    data() {
+        return {
+            fee_by_lbm:"",
+        }
+    },
+    methods: {
+
+        async feeUpdate() {
+              let data = {
+                fee_by_lbm: this.fee_by_lbm,
+            }
+            let response = await ApiClass.postRequest("fee_by_lbm/update",true,data);
+              if(response?.data?.status_code==0)
+              {
+                 return this.failed(response.data.message)
+              }
+               if(response?.data?.status_code==1)
+              {
+                //  return this.success(response.data.message)
+              }
+              
+            // console.log("fee update",response)
+            // console.log("data value",data)
+        },
+     
+    },
+
+    // mounted() {
+    //     this.feeUpdate()
+    // }
+
 }
 </script>
 
@@ -68,10 +101,12 @@ export default {
     font-size: 14px;
     list-style: none;
 }
-.fee_discount{
+
+.fee_discount {
     background-color: var(--hideous-fee-bg);
     border-radius: 5px;
 }
+
 .fee_discount p {
     color: var(--hideous-white);
     font-size: 14px;
@@ -81,36 +116,43 @@ export default {
     color: var(--hideous-pink);
     font-size: 14px;
 }
+
 @media all and (min-width: 992px) and (max-width: 1199px) {
-    .setting_content{
-    padding: 20px !important;
-}
-.fee_discount{
-    padding: 10px !important;
-}
-.column_reverse{
-    flex-direction: column;
-}
+    .setting_content {
+        padding: 20px !important;
+    }
+
+    .fee_discount {
+        padding: 10px !important;
+    }
+
+    .column_reverse {
+        flex-direction: column;
+    }
 
 }
+
 @media all and (min-width: 768px) and (max-width: 991px) {
-.setting_content{
-    padding: 20px !important;
-}
-.fee_discount{
-    padding: 10px !important;
-}
-.column_reverse{
-    flex-direction: column;
-}
+    .setting_content {
+        padding: 20px !important;
+    }
+
+    .fee_discount {
+        padding: 10px !important;
+    }
+
+    .column_reverse {
+        flex-direction: column;
+    }
 }
 
 @media all and (min-width: 320px) and (max-width: 767px) {
-.setting_content{
-    padding: 20px !important;
-}
-.fee_discount{
-    padding: 10px !important;
-}
+    .setting_content {
+        padding: 20px !important;
+    }
+
+    .fee_discount {
+        padding: 10px !important;
+    }
 }
 </style>
